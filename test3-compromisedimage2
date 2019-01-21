@@ -1,0 +1,12 @@
+# Test 3: Analyze Aqua Security's Microscanner Performance on Known Compromised Image Build (Version 2)
+# Remember to replace token with your given token
+FROM java
+
+# run application with this command line 
+CMD ["/usr/bin/java", "-jar", "-Dspring.profiles.active=default", "/app.war"]
+
+ADD https://get.aquasec.com/microscanner /
+RUN chmod +x /microscanner
+ARG token
+RUN /microscanner ${token}
+RUN echo "No vulnerabilities!"
